@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmentation.DashboardFragmentation">
+
+    <TextView
+        android:id="@+id/txtdashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/dashboard_fragmentation"
+        android:textSize="20sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/txtdashboard" />
+    <Button
+        android:id="@+id/btnIsconnected"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:padding="5sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/check_internet"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+</RelativeLayout>

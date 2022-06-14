@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cream"
+    tools:context=".fragmentation.ProfileFragment">
+
+    <ImageView
+        android:id="@+id/profilePic"
+        android:layout_width="wrap_content"
+        android:layout_height="176dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="242dp"
+        android:src="@drawable/profilepic"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profilePic"
+        android:layout_marginStart="20dp"
+        android:text="@string/vishesh_panghal"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/devloper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_marginStart="38dp"
+        android:text="@string/ios_devloper"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/devloper"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/contact_us"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contact"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/address"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/email"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/phone"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/anything"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/phone"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/anything"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/feedback"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/anything"
+        android:layout_marginStart="10sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8sp"
+        android:background="@color/white"
+        android:drawableStart="@drawable/ic_action_double_arrow"
+        android:hint="@string/feedback_share"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/shareBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/feedback"
+        android:layout_margin="12sp"
+        android:text="@string/share" />
+</RelativeLayout>
