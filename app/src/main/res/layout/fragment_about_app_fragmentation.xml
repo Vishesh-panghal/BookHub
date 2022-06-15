@@ -117,6 +117,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/feedback"
-        android:layout_margin="12sp"
+        android:layout_marginStart="12sp"
+        android:layout_marginTop="12sp"
+        android:layout_marginEnd="12sp"
+        android:layout_marginBottom="12sp"
         android:text="@string/share" />
 </RelativeLayout>

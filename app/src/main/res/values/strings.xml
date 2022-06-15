@@ -37,4 +37,6 @@
     <string name="Entre_phone">Phone</string>
     <string name="conform_password">Conform Password</string>
     <string name="Book_hub_Preference">Book Hub Preference</string>
+    <string name="send_otp">Send Otp</string>
+    <string name="login">Login</string>
 </resources>
