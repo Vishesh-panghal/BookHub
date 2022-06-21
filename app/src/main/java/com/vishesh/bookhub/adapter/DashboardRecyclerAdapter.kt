@@ -31,7 +31,7 @@ class DashboardRecyclerAdapter(val context: Context, val itemList: ArrayList<Boo
         holder.txtBookName.text = book.bookName
         holder.txtBookAuthor.text = book.bookAuthor
         holder.txtBookPrice.text = book.bookCost
-        holder.txtBookRating.text = book.bookRating
+        holder.txtBookRating.text = book.bookRating.toString()
         holder.txtBookImage.setImageResource(book.bookImage)
         holder.Content_11.setOnClickListener {
             Toast.makeText(context, " Clicked on ${holder.txtBookName.text}", Toast.LENGTH_SHORT)
@@ -53,4 +53,8 @@ class DashboardRecyclerAdapter(val context: Context, val itemList: ArrayList<Boo
         val txtBookImage: ImageView = view.findViewById(R.id.imgBookImage)
         val Content_11: LinearLayout = view.findViewById(R.id.content_11)
     }
+}
+
+private fun ImageView.setImageResource(bookImage: String) {
+
 }

@@ -11,8 +11,8 @@ import com.vishesh.bookhub.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private var valmobno = "9306078820"
-    private var valpass = "champion"
+    private var valmobno = "1"
+    private var valpass = "1"
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
