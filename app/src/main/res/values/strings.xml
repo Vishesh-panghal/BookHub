@@ -39,4 +39,10 @@
     <string name="Book_hub_Preference">Book Hub Preference</string>
     <string name="send_otp">Send Otp</string>
     <string name="login">Login</string>
+    <string name="name_of_book">Name of Book</string>
+    <string name="name_of_author">Name of Author</string>
+    <string name="rs_299">Rs. 299</string>
+    <string name="_4_3">4.3</string>
+    <string name="about_the_book">About The Book</string>
+    <string name="add_to_favourites">Add To Favourites</string>
 </resources>
