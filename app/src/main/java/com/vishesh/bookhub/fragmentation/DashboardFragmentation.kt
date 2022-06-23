@@ -8,25 +8,23 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.vishesh.bookhub.R
 import com.vishesh.bookhub.adapter.DashboardRecyclerAdapter
 import com.vishesh.bookhub.model.Book
 import com.vishesh.bookhub.util.ConnectionManager
 import org.json.JSONException
-import com.android.volley.toolbox.JsonObjectRequest as JsonObjectRequest
 
 class DashboardFragmentation : Fragment() {
     // Variable Initialised
@@ -51,7 +49,7 @@ class DashboardFragmentation : Fragment() {
         progressLayout.visibility = View.VISIBLE
         layoutManager = LinearLayoutManager(activity)
         val queue = Volley.newRequestQueue(activity as Context)
-        val url = "http://13.235.250.119/v1/fetch_books/"
+        val url = "http://13.235.250.119/v1/book/fetch_books/"
 
         if (ConnectionManager().checkConnectivity(activity as Context)) {
             val jsonRequest = object : JsonObjectRequest(
@@ -93,7 +91,7 @@ class DashboardFragmentation : Fragment() {
                     } catch (e: JSONException) {
                         Toast.makeText(
                             activity as Context,
-                            "Some Error Occurred!!",
+                            "Some Error Occurred!! $it",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
