@@ -22,7 +22,7 @@ import com.vishesh.bookhub.util.ConnectionManager
 import org.json.JSONObject
 
 class Description : AppCompatActivity() {
-    var bookId: String? = "100"
+    private var bookId: String? = "100"
     private lateinit var binding: ActivityDescriptionBinding
     private lateinit var toolbar: Toolbar
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,20 +67,20 @@ class Description : AppCompatActivity() {
                                 .error(R.drawable.book_app_icon).into(binding.imgBookImage)
                             binding.descriptionBookName.text = bookJsonObject.getString("name")
                             binding.descriptionAuthor.text = bookJsonObject.getString("author")
-                            binding.descriptionBookCost.text = bookJsonObject.getString("price")
                             binding.descriptionBookRating.text = bookJsonObject.getString("rating")
+                            binding.descriptionBookCost.text = bookJsonObject.getString("price")
                             binding.Description.text = bookJsonObject.getString("description")
                         } else {
                             Toast.makeText(
                                 this@Description as Context,
-                                "Some error has occurred!!",
+                                "Some error has occurred!! $it",
                                 Toast.LENGTH_LONG
                             ).show()
                         }
                     } catch (e: Exception) {
                         Toast.makeText(
                             this@Description as Context,
-                            "Some error has occurred!!",
+                            "Some error has occurred!! in catch $it",
                             Toast.LENGTH_LONG
                         ).show()
                     }
@@ -107,7 +107,7 @@ class Description : AppCompatActivity() {
             dialog.setPositiveButton("Open Setting") { text, listner ->
                 val settingIntent = Intent(Settings.ACTION_WIRELESS_SETTINGS)
                 startActivity(settingIntent)
-                this@Description?.finish()
+                this@Description.finish()
             }
             dialog.setNegativeButton("Exit") { text, listner ->
                 ActivityCompat.finishAffinity(this@Description)

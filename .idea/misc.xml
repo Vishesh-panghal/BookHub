@@ -10,7 +10,9 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_about_app_fragmentation.xml" value="0.14463019250253292" />
         <entry key="app/src/main/res/layout/fragment_dashboard_fragmentation.xml" value="0.29739583333333336" />
+        <entry key="app/src/main/res/layout/fragment_favourite.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/recycler_dashboard_single_row.xml" value="0.2832550048828126" />
+        <entry key="app/src/main/res/menu/menu_drawer.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.29739583333333336" />
       </map>
     </option>

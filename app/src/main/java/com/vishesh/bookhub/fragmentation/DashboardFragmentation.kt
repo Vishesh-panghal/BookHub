@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,7 +52,7 @@ class DashboardFragmentation : Fragment() {
         val queue = Volley.newRequestQueue(activity as Context)
         val url = "http://13.235.250.119/v1/book/fetch_books/"
 
-        if (ConnectionManager().checkConnectivity(activity as Context)) {
+        if (ConnectionManager().checkConnectivity(requireContext())) {
             val jsonRequest = object : JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -60,9 +61,11 @@ class DashboardFragmentation : Fragment() {
                     // Here we will handle the response
                     try {
                         progressLayout.visibility = View.GONE
-                        val success = it.getBoolean("Success")
+                        val success = it.getBoolean("success")
+                        Log.d("Main Activity", "success = $success")
                         if (success) {
                             val data = it.getJSONArray("data")
+                            Log.d("Main Activity", "API Data =  $data")
                             for (i in 0 until data.length()) {
                                 val bookJsonObject = data.getJSONObject(i)
                                 val bookObject = Book(
@@ -82,6 +85,7 @@ class DashboardFragmentation : Fragment() {
                                 recyclerDashboard.layoutManager = layoutManager
                             }
                         } else {
+                            Log.d("Tag", "onCreateView: Queue $queue")
                             Toast.makeText(
                                 activity as Context,
                                 "Some error has occurred!!",
@@ -89,6 +93,7 @@ class DashboardFragmentation : Fragment() {
                             ).show()
                         }
                     } catch (e: JSONException) {
+                        Log.d("Tag", "onCreateView: Message = ${e.message}")
                         Toast.makeText(
                             activity as Context,
                             "Some Error Occurred!! $it",

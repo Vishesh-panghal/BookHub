@@ -32,7 +32,7 @@
             android:id="@+id/txtBookName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="P.S I love you"
+            android:text="@string/p_s_i_love_you"
             android:padding="8dp"
             android:textSize="18sp"
             android:textColor="#000000"/>
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtBookName"
-            android:text="Name of the Author"
+            android:text="@string/name_of_the_author"
             android:padding="8dp"
             android:textSize="15sp"/>
 
@@ -50,13 +50,13 @@
             android:id="@+id/txtBookPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="Rs. 299"
-            android:padding="8dp"
             android:layout_below="@id/txtBookAuthor"
+            android:layout_alignParentBottom="true"
+            android:padding="8dp"
+            android:text="@string/rs_299"
+            android:textColor="#357a38"
             android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="#357a38"/>
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_action_star"
         android:textColor="#ffca28"
-        android:text="4.5"
+        android:text="@string/_4_5"
         android:drawablePadding="4dp"
         android:textSize="15sp"
         android:textStyle="bold">
