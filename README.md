@@ -30,4 +30,10 @@ other stuff for their need.
 - Regular update application for papers
 - Add Community page(public and Inter College)
 
+## Install my-project with Drive
+
+```bash
+  Soon.. :)
+```
+
 ![Biblio_logo](https://user-images.githubusercontent.com/76419786/175754862-23b557b5-3df1-4032-89bc-a62178aee730.png)
