@@ -8,17 +8,13 @@
     android:orientation="vertical"
     tools:context=".activity.LoginActivity">
 
-    <TextView
+    <ImageView
         android:id="@+id/bookHub"
-        android:layout_width="177dp"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="105dp"
-        android:text="@string/biblio"
-        android:textColor="#D81B60"
-        android:textSize="55sp"
-        android:textStyle="italic|bold" />
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/biblio_logo" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="380dp"
