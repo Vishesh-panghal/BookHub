@@ -10,15 +10,15 @@
 
     <TextView
         android:id="@+id/bookHub"
-        android:layout_width="wrap_content"
+        android:layout_width="177dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="5dp"
         android:layout_marginTop="105dp"
-        android:text="@string/book_hub"
-        android:textColor="@color/pink"
-        android:textSize="45sp"
-        android:textStyle="bold|italic|normal" />
+        android:text="@string/biblio"
+        android:textColor="#D81B60"
+        android:textSize="55sp"
+        android:textStyle="italic|bold" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="380dp"

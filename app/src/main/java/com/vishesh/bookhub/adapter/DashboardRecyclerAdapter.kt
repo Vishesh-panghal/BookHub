@@ -34,9 +34,11 @@ class DashboardRecyclerAdapter(val context: Context, val itemList: ArrayList<Boo
         holder.txtBookName.text = book.bookName
         holder.txtBookAuthor.text = book.bookAuthor
         holder.txtBookPrice.text = book.bookCost
-        Log.d("Tag","price:- ${book.bookCost}")
         holder.txtBookRating.text = book.bookRating
-        Picasso.get().load(book.bookImage).into(holder.txtBookImage)
+        Picasso.get().load(book.bookImage).error(R.drawable.book_app_icon).into(holder.txtBookImage)
+        Log.d("tag","image:-${holder.txtBookImage}")
+
+        // to navigate from dashboard activity to description activity
         holder.Content_11.setOnClickListener {
             val intent = Intent(context, Description::class.java)
             intent.putExtra("Content_11", book.bookId)

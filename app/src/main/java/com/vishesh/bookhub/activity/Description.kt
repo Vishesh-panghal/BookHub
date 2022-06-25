@@ -1,7 +1,5 @@
 package com.vishesh.bookhub.activity
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
@@ -22,19 +20,25 @@ import com.vishesh.bookhub.util.ConnectionManager
 import org.json.JSONObject
 
 class Description : AppCompatActivity() {
+    // variable declare
     private var bookId: String? = "100"
     private lateinit var binding: ActivityDescriptionBinding
     private lateinit var toolbar: Toolbar
+
+    // onCreate start
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_description)
         binding = ActivityDescriptionBinding.inflate(layoutInflater)
         setContentView(binding.root)
         toolbar = findViewById(R.id.description_Toolbar)
+        // to show progress bar
         binding.progressBar.visibility = View.VISIBLE
         binding.progressBarLayout.visibility = View.VISIBLE
+        // page title
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Book Details"
+        // to store the book_id if it is not null
         if (intent != null) {
             bookId = intent.getStringExtra("book_id")
         } else {
@@ -47,22 +51,30 @@ class Description : AppCompatActivity() {
             Toast.makeText(this@Description, "Some unexpected Error occurred!!", Toast.LENGTH_LONG)
                 .show()
         }
+        // make a new request
         val queue = Volley.newRequestQueue(this@Description)
         val url = "http://13.235.250.119/v1/book/get_book/"
+
+        // to sent data in POST request
         val jsonParams = JSONObject()
         jsonParams.put("book_id", bookId)
 
+        // to check internet is connected or not
         if (ConnectionManager().checkConnectivity(this@Description)) {
-            val jsonRequest = object : JsonObjectRequest(
-                Request.Method.POST,
-                url,
-                jsonParams,
-                Response.Listener {
+            // Post request start
+            val jsonRequest =
+                object : JsonObjectRequest(Request.Method.POST, url, jsonParams, Response.Listener {
+
+                    //try 'n' catch start
                     try {
+
+                        // to store the success key for response listner
                         val success = it.getBoolean("success")
                         if (success) {
+                            // data retrieve to API
                             val bookJsonObject = it.getJSONObject("book_data")
                             binding.progressBarLayout.visibility = View.GONE
+                            val bookImageUrl = bookJsonObject.getString("image")
                             Picasso.get().load(bookJsonObject.getString("image"))
                                 .error(R.drawable.book_app_icon).into(binding.imgBookImage)
                             binding.descriptionBookName.text = bookJsonObject.getString("name")
@@ -71,36 +83,41 @@ class Description : AppCompatActivity() {
                             binding.descriptionBookCost.text = bookJsonObject.getString("price")
                             binding.Description.text = bookJsonObject.getString("description")
                         } else {
+                            // error in retrieve data
                             Toast.makeText(
-                                this@Description as Context,
+                                this@Description,
                                 "Some error has occurred!! $it",
                                 Toast.LENGTH_LONG
                             ).show()
                         }
                     } catch (e: Exception) {
                         Toast.makeText(
-                            this@Description as Context,
+                            this@Description,
                             "Some error has occurred!! in catch $it",
                             Toast.LENGTH_LONG
                         ).show()
                     }
                 },
-                Response.ErrorListener {
-                    Toast.makeText(
-                        this@Description as Context,
-                        "Volley Error occurred!! $it",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }) {
-                override fun getHeaders(): MutableMap<String, String> {
-                    val headers = HashMap<String, String>()
-                    headers["Content-type"] = "application/json"
-                    headers["token"] = "db339e8abbedeb"
-                    return super.getHeaders()
+                    Response.ErrorListener {
+                        // error with Volley library
+                        Toast.makeText(
+                            this@Description,
+                            "Volley Error occurred!! $it",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }) {
+                    // headers (content-type)'n'(token)
+                    override fun getHeaders(): MutableMap<String, String> {
+                        val headers = HashMap<String, String>()
+                        headers["Content-type"] = "application/json"
+                        headers["token"] = "db339e8abbedeb"
+                        return headers
+                    }
                 }
-            }
+            // it mandatory to add this line to make an request
             queue.add(jsonRequest)
-        }else {
+        } else {
+            // If internet is not connected
             val dialog = AlertDialog.Builder(this@Description)
             dialog.setTitle("Error")
             dialog.setMessage("App is not Connected..:(")

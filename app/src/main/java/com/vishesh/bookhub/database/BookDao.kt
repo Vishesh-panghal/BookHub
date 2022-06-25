@@ -11,13 +11,11 @@ interface BookDao {
     fun insertBook(bookEntity: BookEntity)
 
     @Delete
-    fun  deleteBook(bookEntity: BookEntity)
+    fun deleteBook(bookEntity: BookEntity)
 
     @Query("SELECT * FROM books")
     fun getAllBook(): List<BookEntity>
 
-//    @Query(SELECT * FROM book WHERE book_id = )
-//    fun getBookById(bookid: String): BookEntity
-
-
+    @Query("SELECT * FROM books WHERE book_id = book_id")
+    fun getBookById(bookId: String): BookEntity
 }

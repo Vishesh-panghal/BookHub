@@ -17,7 +17,6 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -49,25 +48,27 @@ class DashboardFragmentation : Fragment() {
         progressBar = view.findViewById(R.id.progressBar)
         progressLayout.visibility = View.VISIBLE
         layoutManager = LinearLayoutManager(activity)
+        // make a new request
         val queue = Volley.newRequestQueue(activity as Context)
         val url = "http://13.235.250.119/v1/book/fetch_books/"
-
+        // to check internet is connected or not
         if (ConnectionManager().checkConnectivity(requireContext())) {
+            // GET request start
             val jsonRequest = object : JsonObjectRequest(
-                Request.Method.GET,
+                Method.GET,
                 url,
                 null,
-                Response.Listener() {
+                Response.Listener {
                     // Here we will handle the response
                     try {
                         progressLayout.visibility = View.GONE
                         val success = it.getBoolean("success")
-                        Log.d("Main Activity", "success = $success")
                         if (success) {
                             val data = it.getJSONArray("data")
                             Log.d("Main Activity", "API Data =  $data")
                             for (i in 0 until data.length()) {
                                 val bookJsonObject = data.getJSONObject(i)
+                                // data extract to API
                                 val bookObject = Book(
                                     bookJsonObject.getString("book_id"),
                                     bookJsonObject.getString("name"),
@@ -85,7 +86,6 @@ class DashboardFragmentation : Fragment() {
                                 recyclerDashboard.layoutManager = layoutManager
                             }
                         } else {
-                            Log.d("Tag", "onCreateView: Queue $queue")
                             Toast.makeText(
                                 activity as Context,
                                 "Some error has occurred!!",
@@ -93,7 +93,6 @@ class DashboardFragmentation : Fragment() {
                             ).show()
                         }
                     } catch (e: JSONException) {
-                        Log.d("Tag", "onCreateView: Message = ${e.message}")
                         Toast.makeText(
                             activity as Context,
                             "Some Error Occurred!! $it",
@@ -102,14 +101,15 @@ class DashboardFragmentation : Fragment() {
                     }
                 },
 
-                Response.ErrorListener() {
-                    // Here we will handle the errors
+                Response.ErrorListener {
+                    // Here we will handle the volley errors
                     Toast.makeText(
                         activity as Context,
                         "Volley Error occurred!! $it",
                         Toast.LENGTH_SHORT
                     ).show()
                 }) {
+                // headers (content-type)'n'(token)
                 override fun getHeaders(): MutableMap<String, String> {
                     val headers = HashMap<String, String>()
                     headers["Content-type"] = "application/json"
@@ -117,9 +117,11 @@ class DashboardFragmentation : Fragment() {
                     return headers
                 }
             }
+            // it mandatory to add this line to make an request
             queue.add(jsonRequest)
 
         } else {
+            // If internet is not connected
             val dialog = AlertDialog.Builder(activity as Context)
             dialog.setTitle("Error")
             dialog.setMessage("App is not Connected..:(")

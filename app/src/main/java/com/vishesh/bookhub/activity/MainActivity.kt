@@ -98,11 +98,11 @@ class MainActivity : AppCompatActivity() {
     //        Setup Hamburger Icon
     val actionBarDrawerToggle by lazy {
         ActionBarDrawerToggle(
-        this@MainActivity,
-        drawer,
-        R.string.open_drawer,
-        R.string.close_drawer
-    )
+            this@MainActivity,
+            drawer,
+            R.string.open_drawer,
+            R.string.close_drawer
+        )
     }
 
     //To open navigation drawer open from left side with Hamburger icon
