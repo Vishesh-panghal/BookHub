@@ -16,6 +16,6 @@ interface BookDao {
     @Query("SELECT * FROM books")
     fun getAllBook(): List<BookEntity>
 
-    @Query("SELECT * FROM books WHERE book_id = book_id")
+    @Query("SELECT * FROM books WHERE book_id = :bookId")
     fun getBookById(bookId: String): BookEntity
 }

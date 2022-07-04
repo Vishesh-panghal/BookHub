@@ -13,4 +13,5 @@
     <color name="pink">#FF003B</color>
     <color name="transparentColor">#00FFFFFF</color>
     <color name="fav">#ffc828</color>
+    <color name="fav_color">#311b92</color>
 </resources>

@@ -49,4 +49,6 @@
     <string name="_4_5">4.5</string>
     <string name="p_s_i_love_you">P.S I love you</string>
     <string name="biblio">BIBLIO</string>
+    <string name="Remove_from_favourites">Remove from favourites</string>
+    <string name="Add_to_favourites">Add to favourites</string>
 </resources>
