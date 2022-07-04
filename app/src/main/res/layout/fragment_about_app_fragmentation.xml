@@ -8,14 +8,14 @@
 
     <ImageView
         android:id="@+id/profilePic"
-        android:layout_width="wrap_content"
+        android:layout_width="176dp"
         android:layout_height="176dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="12dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="242dp"
-        android:src="@drawable/profilepic"/>
+        android:src="@drawable/profilepic" />
 
     <TextView
         android:id="@+id/name"
@@ -33,11 +33,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/name"
-        android:layout_marginStart="38dp"
-        android:text="@string/ios_devloper"
+        android:layout_marginStart="25dp"
+        android:text="@string/android_devloper"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/contact"
@@ -49,7 +48,7 @@
         android:text="@string/contact_us"
         android:textColor="@color/black"
         android:textSize="28sp"
-        android:textStyle="bold" />
+        android:textStyle="italic|bold|normal" />
 
     <TextView
         android:id="@+id/address"
@@ -60,8 +59,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/address"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/email"
@@ -72,8 +70,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/email"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/phone"
@@ -84,8 +81,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/phone"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/anything"

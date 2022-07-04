@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         navigationView = findViewById(R.id.navigationView)
         setUpToolbar()
         openDashboard()
-        // change the icon to back icon
+        // change the Humburg icon to back icon
         drawer.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
 

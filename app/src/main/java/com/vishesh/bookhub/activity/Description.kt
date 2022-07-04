@@ -3,6 +3,7 @@ package com.vishesh.bookhub.activity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -21,9 +22,10 @@ import org.json.JSONObject
 
 class Description : AppCompatActivity() {
     // variable declare
-    private var bookId: String? = "100"
     private lateinit var binding: ActivityDescriptionBinding
     private lateinit var toolbar: Toolbar
+
+     lateinit var bookId: String
 
     // onCreate start
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,20 +37,19 @@ class Description : AppCompatActivity() {
         // to show progress bar
         binding.progressBar.visibility = View.VISIBLE
         binding.progressBarLayout.visibility = View.VISIBLE
+
         // page title
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Book Details"
-        // to store the book_id if it is not null
+
+        // to store the book_id if it is not null from intent(DashboaedRecyclewrAdapter)
         if (intent != null) {
-            bookId = intent.getStringExtra("book_id")
+            Log.d("bookId","intent = $intent")
+           bookId = intent.getStringExtra("book_id").toString()
+//            Log.d("bookId","Book_Id = $bookId")
         } else {
             finish()
-            Toast.makeText(this@Description, "Some unexpected Error occurred!!", Toast.LENGTH_LONG)
-                .show()
-        }
-        if (bookId == "100") {
-            finish()
-            Toast.makeText(this@Description, "Some unexpected Error occurred!!", Toast.LENGTH_LONG)
+            Toast.makeText(this@Description, "Some unexpected Error occurred!! in bookId", Toast.LENGTH_LONG)
                 .show()
         }
         // make a new request
@@ -58,7 +59,7 @@ class Description : AppCompatActivity() {
         // to sent data in POST request
         val jsonParams = JSONObject()
         jsonParams.put("book_id", bookId)
-
+//        Log.d("bookId","Book Id = $bookId")
         // to check internet is connected or not
         if (ConnectionManager().checkConnectivity(this@Description)) {
             // Post request start
@@ -86,7 +87,7 @@ class Description : AppCompatActivity() {
                             // error in retrieve data
                             Toast.makeText(
                                 this@Description,
-                                "Some error has occurred!! $it",
+                                "Some error has occurred!! 'n' try else $it",
                                 Toast.LENGTH_LONG
                             ).show()
                         }

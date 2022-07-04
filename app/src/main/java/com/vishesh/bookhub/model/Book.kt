@@ -1,5 +1,7 @@
 package com.vishesh.bookhub.model
 
+import android.widget.ImageView
+
 data class Book(
     val bookId: String,
     val bookName: String,

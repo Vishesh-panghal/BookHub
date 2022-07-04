@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.gulehri.magicutils.Utilities
 import com.squareup.picasso.Picasso
 import com.vishesh.bookhub.R
 import com.vishesh.bookhub.activity.Description
@@ -36,12 +37,12 @@ class DashboardRecyclerAdapter(val context: Context, val itemList: ArrayList<Boo
         holder.txtBookPrice.text = book.bookCost
         holder.txtBookRating.text = book.bookRating
         Picasso.get().load(book.bookImage).error(R.drawable.book_app_icon).into(holder.txtBookImage)
-        Log.d("tag","image:-${holder.txtBookImage}")
 
         // to navigate from dashboard activity to description activity
         holder.Content_11.setOnClickListener {
             val intent = Intent(context, Description::class.java)
-            intent.putExtra("Content_11", book.bookId)
+            intent.putExtra("content_11", book.bookId)
+            Log.d("bookId","Book Id in dashboard = $book.bookId")
             context.startActivity(intent)
         }
     }
