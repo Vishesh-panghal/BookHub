@@ -41,7 +41,7 @@ class DashboardRecyclerAdapter(val context: Context, val itemList: ArrayList<Boo
         // to navigate from dashboard activity to description activity
         holder.Content_11.setOnClickListener {
             val intent = Intent(context, Description::class.java)
-            intent.putExtra("content_11", book.bookId)
+            intent.putExtra("book_id", book.bookId)
             Log.d("bookId","Book Id in dashboard = $book.bookId")
             context.startActivity(intent)
         }

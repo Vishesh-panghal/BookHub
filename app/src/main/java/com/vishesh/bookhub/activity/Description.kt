@@ -31,7 +31,7 @@ class Description : AppCompatActivity() {
     private lateinit var binding: ActivityDescriptionBinding
     private lateinit var toolbar: Toolbar
 
-     var bookId: String? = "100"
+    var bookId: String? = "100"
 
     // onCreate start
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +51,7 @@ class Description : AppCompatActivity() {
         // to store the book_id if it is not null from intent(DashboaedRecyclewrAdapter)
         if (intent != null) {
             Log.d("bookId", "intent = ${bookId.toString()}")
-            bookId = intent.getStringExtra("book_id").toString()
+            bookId = intent.getStringExtra("book_id")
 //            Log.d("bookId","Book_Id = $bookId")
         } else {
             finish()
@@ -59,8 +59,15 @@ class Description : AppCompatActivity() {
                 this@Description,
                 "Some unexpected Error occurred!! in bookId",
                 Toast.LENGTH_LONG
-            )
-                .show()
+            ).show()
+        }
+        if (bookId == "100") {
+            finish()
+            Toast.makeText(
+                this@Description,
+                "Some unexpected error occurred!",
+                Toast.LENGTH_SHORT
+            ).show()
         }
         // make a new request
         val queue = Volley.newRequestQueue(this@Description)
@@ -104,7 +111,7 @@ class Description : AppCompatActivity() {
                                 binding.Description.text.toString(),
                                 bookImageUrl
                             )
-                            val chckFav =DBAsynTask(applicationContext,bookEntity,1).execute()
+                            val chckFav = DBAsynTask(applicationContext, bookEntity, 1).execute()
                             val isFav = chckFav.get()
                             if (isFav) {
                                 binding.descBtn.text = "Remove from Favourites"
@@ -113,10 +120,13 @@ class Description : AppCompatActivity() {
                                     R.color.fav_color
                                 )
                                 binding.descBtn.setBackgroundColor(favColor)
-                            }else{
+                            } else {
                                 binding.descBtn.text = "Add to Favourites"
                                 val noFavColor =
-                                    ContextCompat.getColor(applicationContext, R.color.purple_700)
+                                    ContextCompat.getColor(
+                                        applicationContext,
+                                        R.color.purple_700
+                                    )
                                 binding.descBtn.setBackgroundColor(noFavColor)
                             }
                             binding.descBtn.setOnClickListener {
@@ -125,7 +135,7 @@ class Description : AppCompatActivity() {
                                         bookEntity,
                                         1
                                     ).execute().get()
-                                ){
+                                ) {
                                     val async =
                                         DBAsynTask(applicationContext, bookEntity, 2).execute()
                                     val result = async.get()
@@ -136,8 +146,12 @@ class Description : AppCompatActivity() {
                                             Toast.LENGTH_SHORT
                                         ).show()
 
-                                        binding.descBtn.text = getString(R.string.Remove_from_favourites)
-                                        val favColor = ContextCompat.getColor(applicationContext, R.color.purple_700)
+                                        binding.descBtn.text =
+                                            getString(R.string.Remove_from_favourites)
+                                        val favColor = ContextCompat.getColor(
+                                            applicationContext,
+                                            R.color.purple_700
+                                        )
                                         binding.descBtn.setBackgroundColor(favColor)
                                     } else {
                                         Toast.makeText(
@@ -146,11 +160,12 @@ class Description : AppCompatActivity() {
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     }
-                                }else{
-                                    val async = DBAsynTask(applicationContext, bookEntity, 3).execute()
+                                } else {
+                                    val async =
+                                        DBAsynTask(applicationContext, bookEntity, 3).execute()
                                     val result = async.get()
 
-                                    if (result){
+                                    if (result) {
                                         Toast.makeText(
                                             this@Description,
                                             "Book removed from favourites",
@@ -159,7 +174,10 @@ class Description : AppCompatActivity() {
 
                                         binding.descBtn.text = getString(R.string.Add_to_favourites)
                                         val noFavColor =
-                                            ContextCompat.getColor(applicationContext, R.color.purple_700)
+                                            ContextCompat.getColor(
+                                                applicationContext,
+                                                R.color.purple_700
+                                            )
                                         binding.descBtn.setBackgroundColor(noFavColor)
                                     } else {
                                         Toast.makeText(
