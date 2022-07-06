@@ -16,7 +16,7 @@ import com.vishesh.bookhub.R
 import com.vishesh.bookhub.activity.Description
 import com.vishesh.bookhub.model.Book
 
-// To make a bridge between UI content and data (which is shown)
+// To make a bridge between UI content and data on dashboard Fragmentation (which is shown)
 class DashboardRecyclerAdapter(val context: Context, val itemList: ArrayList<Book>) :
     RecyclerView.Adapter<DashboardRecyclerAdapter.DashboardViewHolder>() // link adapter class and Recycler view
 {

@@ -6,9 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.Toast
@@ -25,6 +23,7 @@ import com.vishesh.bookhub.adapter.DashboardRecyclerAdapter
 import com.vishesh.bookhub.model.Book
 import com.vishesh.bookhub.util.ConnectionManager
 import org.json.JSONException
+import java.util.*
 
 class DashboardFragmentation : Fragment() {
     // Variable Initialised
@@ -43,6 +42,7 @@ class DashboardFragmentation : Fragment() {
         // Inflater inflates a layout inside the fragmentation.
         val view = inflater.inflate(R.layout.fragment_dashboard_fragmentation, container, false)
 
+        setHasOptionsMenu(true)
         recyclerDashboard = view.findViewById(R.id.recyclerDashboard)
         progressLayout = view.findViewById(R.id.progressBarLayout)
         progressBar = view.findViewById(R.id.progressBar)
@@ -103,11 +103,13 @@ class DashboardFragmentation : Fragment() {
 
                 Response.ErrorListener {
                     // Here we will handle the volley errors
-                    Toast.makeText(
-                        activity as Context,
-                        "Volley Error occurred!! $it",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    if (activity != null) {
+                        Toast.makeText(
+                            activity as Context,
+                            "Volley Error occurred!! $it",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }) {
                 // headers (content-type)'n'(token)
                 override fun getHeaders(): MutableMap<String, String> {
@@ -139,5 +141,4 @@ class DashboardFragmentation : Fragment() {
 
         return view
     }
-
 }
