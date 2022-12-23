@@ -21,7 +21,7 @@ other stuff for their need.
 # Initial setup in the app:
 
 1. Create an account on application.
-2. After, Log In through the account and explore the data as their requirement.
+2. After, Login through the account and explore the data as their requirement.
 
 
 ## Roadmap
